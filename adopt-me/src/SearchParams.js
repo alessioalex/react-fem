@@ -19,8 +19,6 @@ const SearchParams = () => {
       type: animal,
     });
 
-    setTheme("blue");
-
     setPets(animals || []);
   }
 
@@ -59,6 +57,22 @@ const SearchParams = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
+
+        <label htmlFor="theme">
+          Theme
+          <select
+            id="theme"
+            value={theme}
+            onBlur={(e) => setTheme(e.target.value)}
+            onChange={(e) => setTheme(e.target.value)}
+          >
+            <option value="peru">Peru</option>
+            <option value="darkblue">Dark Blue</option>
+            <option value="mediumorchid">Medium Orchid</option>
+            <option value="chartreuse">Chartreuse</option>
+          </select>
+        </label>
+
         <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
 
