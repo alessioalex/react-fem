@@ -12,6 +12,19 @@ const SearchParams = () => {
   const [pets, setPets] = useState([]);
   const [theme, setTheme] = useContext(ThemeContext);
 
+  // refactor requestPets
+  function requestPets() {
+    pet
+      .animals({
+        location,
+        breed,
+        type: animal,
+      })
+      .then(({ animals }) => {
+        setPets(animals || []);
+      });
+  }
+  /*
   async function requestPets() {
     const { animals } = await pet.animals({
       location,
@@ -21,6 +34,7 @@ const SearchParams = () => {
 
     setPets(animals || []);
   }
+*/
 
   useEffect(() => {
     setBreeds([]);
@@ -37,9 +51,7 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <h1>
-        {location} ({new Date().toLocaleTimeString()})
-      </h1>
+      <h1>{location}</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
